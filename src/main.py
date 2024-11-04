@@ -1,6 +1,5 @@
-﻿from termcolor import colored
-from loader import load_settings
+﻿import loader
 
 if __name__ == '__main__':
     # load settings
-    settings = load_settings()
+    settings = loader.load_settings()

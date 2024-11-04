@@ -1,5 +1,6 @@
-﻿def print_hi(name):
-    print(f'Hi, {name}!')
+﻿from termcolor import colored
+from loader import load_settings
 
 if __name__ == '__main__':
-    print_hi('Seedbly')
+    # load settings
+    settings = load_settings()

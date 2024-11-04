@@ -1,0 +1,6 @@
+{
+  "engine": "PostgreSQL",
+  "stencil": "Blog",
+  "size": 100000,
+  "connection-string": "localhost:4359;sa;sa123"
+}

@@ -17,8 +17,8 @@ def as_settings(dct) -> Settings:
 def load_settings() -> Settings:
     """Loads settings from local file and parse to ``Settings`` entity."""
     try:
-        json_file = open(SETTINGS_FILE_PATH, mode="r")
-        loaded_settings = json.load(json_file, object_hook=as_settings)
+        with open(SETTINGS_FILE_PATH, 'r', encoding='utf-8') as json_file:
+            loaded_settings = json.load(json_file, object_hook=as_settings)
 
         print(colored('\u2713', 'green'), colored('Settings loaded successful!', 'white'))
 
@@ -26,6 +26,8 @@ def load_settings() -> Settings:
 
     except FileNotFoundError:
         print(colored(f'File "{SETTINGS_FILE_PATH}" not found!', 'red'))
+        return Settings('','', 1, '')
 
     except JSONDecodeError:
         print(colored('Settings file has invalid structure!', 'red'))
+        return Settings('', '', 1, '')

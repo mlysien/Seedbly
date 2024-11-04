@@ -1,5 +1,8 @@
-﻿def print_hi(name):
-    print(f'Hi, {name}!')
+﻿from loader import load_settings
 
 if __name__ == '__main__':
-    print_hi('Seedbly')
+
+    # load settings
+    settings = load_settings()
+
+    print(f'Settings loaded {settings.engine}')

@@ -1,5 +1,5 @@
 """
-Contains entity represents application settings.
+Entity represents application settings.
 """
 
 class Settings:
@@ -9,3 +9,11 @@ class Settings:
         self.stencil = stencil
         self.size = size
         self.connection_string = connection_string
+
+    def get_engine(self):
+        """Returns engine field"""
+        return self.engine
+
+    def get_size(self):
+        """Returns size field"""
+        return self.size

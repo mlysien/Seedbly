@@ -1,6 +1,4 @@
-﻿""" Main script """
-
-import loader
+﻿import loader
 
 if __name__ == '__main__':
     # load settings

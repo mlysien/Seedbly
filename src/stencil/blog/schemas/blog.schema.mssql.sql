@@ -1,0 +1,58 @@
+﻿CREATE TABLE [User] (
+    id INT PRIMARY KEY IDENTITY(1,1),
+    username NVARCHAR(255) NOT NULL UNIQUE,
+    email NVARCHAR(255) NOT NULL UNIQUE,
+    password NVARCHAR(MAX) NOT NULL,
+    joined_at DATETIME DEFAULT GETDATE()
+);
+
+CREATE TABLE Category (
+    id INT PRIMARY KEY IDENTITY(1,1),
+    name NVARCHAR(255) NOT NULL UNIQUE
+);
+
+CREATE TABLE Post (
+    id INT PRIMARY KEY IDENTITY(1,1),
+    author_id INT NOT NULL,
+    title NVARCHAR(255) NOT NULL,
+    content NVARCHAR(MAX) NOT NULL,
+    category_id INT NOT NULL,
+    created_at DATETIME DEFAULT GETDATE(),
+    updated_at DATETIME DEFAULT GETDATE(),
+    likes INT DEFAULT 0,
+    FOREIGN KEY (author_id) REFERENCES [User](id) ON DELETE CASCADE,
+    FOREIGN KEY (category_id) REFERENCES Category(id) ON DELETE SET NULL
+);
+
+CREATE TABLE Comment (
+    id INT PRIMARY KEY IDENTITY(1,1),
+    author_id INT NOT NULL,
+    post_id INT NOT NULL,
+    content NVARCHAR(MAX) NOT NULL,
+    created_at DATETIME DEFAULT GETDATE(),
+    FOREIGN KEY (author_id) REFERENCES [User](id) ON DELETE CASCADE,
+    FOREIGN KEY (post_id) REFERENCES Post(id) ON DELETE CASCADE
+);
+
+CREATE TABLE Tag (
+    id INT PRIMARY KEY IDENTITY(1,1),
+    name NVARCHAR(255) NOT NULL UNIQUE
+);
+
+CREATE TABLE PostTag (
+    post_id INT NOT NULL,
+    tag_id INT NOT NULL,
+    PRIMARY KEY (post_id, tag_id),
+    FOREIGN KEY (post_id) REFERENCES Post(id) ON DELETE CASCADE,
+    FOREIGN KEY (tag_id) REFERENCES Tag(id) ON DELETE CASCADE
+);
+
+CREATE TABLE [Like] (
+    id INT PRIMARY KEY IDENTITY(1,1),
+    user_id INT NOT NULL,
+    post_id INT NOT NULL,
+    liked_at DATETIME DEFAULT GETDATE(),
+    FOREIGN KEY (user_id) REFERENCES [User](id) ON DELETE CASCADE,
+    FOREIGN KEY (post_id) REFERENCES Post(id) ON DELETE CASCADE,
+    CONSTRAINT UQ_User_Post_Like UNIQUE (user_id, post_id)
+);

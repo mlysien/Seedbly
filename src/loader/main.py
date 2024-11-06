@@ -1,21 +1,13 @@
-"""Loader module"""
-
 import json
-
 from json import JSONDecodeError
-
 from termcolor import colored
-
 from loader import settings
-
 
 SETTINGS_FILE_PATH = 'settings.json'
 
 def as_settings(dct) -> settings.Settings:
     """Loads settings from local file and parse to ``Settings`` entity."""
     return settings.Settings(dct['engine'], dct['stencil'], dct['size'], dct['connection-string'])
-
-
 
 def load_settings() -> settings.Settings:
     """Loads settings from local file and parse to ``Settings`` entity."""

@@ -1,6 +1,3 @@
-﻿"""
-Provides logic for load application settings from json file.
-"""
-
-import loader.settings
-from loader.module import load_settings
+﻿from loader import settings
+from loader.main import load_settings
+from loader.main import SETTINGS_FILE_PATH

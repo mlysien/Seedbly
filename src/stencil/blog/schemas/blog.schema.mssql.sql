@@ -1,4 +1,4 @@
-﻿CREATE TABLE [User] (
+CREATE TABLE [User] (
     id INT PRIMARY KEY IDENTITY(1,1),
     username NVARCHAR(255) NOT NULL UNIQUE,
     email NVARCHAR(255) NOT NULL UNIQUE,
@@ -16,7 +16,7 @@ CREATE TABLE Post (
     author_id INT NOT NULL,
     title NVARCHAR(255) NOT NULL,
     content NVARCHAR(MAX) NOT NULL,
-    category_id INT NOT NULL,
+    category_id INT NULL,
     created_at DATETIME DEFAULT GETDATE(),
     updated_at DATETIME DEFAULT GETDATE(),
     likes INT DEFAULT 0,
@@ -31,7 +31,7 @@ CREATE TABLE Comment (
     content NVARCHAR(MAX) NOT NULL,
     created_at DATETIME DEFAULT GETDATE(),
     FOREIGN KEY (author_id) REFERENCES [User](id) ON DELETE CASCADE,
-    FOREIGN KEY (post_id) REFERENCES Post(id) ON DELETE CASCADE
+    FOREIGN KEY (post_id) REFERENCES Post(id) ON DELETE NO ACTION
 );
 
 CREATE TABLE Tag (
@@ -51,8 +51,7 @@ CREATE TABLE [Like] (
     id INT PRIMARY KEY IDENTITY(1,1),
     user_id INT NOT NULL,
     post_id INT NOT NULL,
-    liked_at DATETIME DEFAULT GETDATE(),
-    FOREIGN KEY (user_id) REFERENCES [User](id) ON DELETE CASCADE,
-    FOREIGN KEY (post_id) REFERENCES Post(id) ON DELETE CASCADE,
-    CONSTRAINT UQ_User_Post_Like UNIQUE (user_id, post_id)
+    created_at DATETIME DEFAULT GETDATE(),
+    FOREIGN KEY (user_id) REFERENCES [User](id) ON DELETE NO ACTION,
+    FOREIGN KEY (post_id) REFERENCES Post(id) ON DELETE NO ACTION
 );

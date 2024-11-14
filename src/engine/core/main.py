@@ -1,9 +1,17 @@
 ﻿from enum import Enum
 
+class DatabaseSchemas(Enum):
+    """
+    Represents database schemas.
+    """
+    BLOG = 'Blog'
+    LIBRARY = 'Library'
+    UNIVERSITY = 'University'
+
 class DatabaseEngine(Enum):
     """
     Represents database engines.
     """
-    SQLITE = 1
-    MSSQL = 2
-    POSTGRESQL = 3
+    SQLITE = 'SQLite'
+    MSSQL = 'MS-SQL'
+    POSTGRESQL = 'PostgreSQL'

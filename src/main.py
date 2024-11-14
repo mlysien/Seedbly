@@ -1,30 +1,28 @@
-﻿import inquirer
-import loader
+﻿import os
+from termcolor import colored
+from settings import provide_settings
+
+def welcome_banner():
+    """
+    Displays welcome banner.
+    """
+    print(colored('Welcome in Seedbly - a tool for create database schemas\n', 'light_cyan'))
+
+def clear_console():
+    """
+    Clears console depends on operating system.
+    """
+    os.system('cls' if os.name=='nt' else 'clear')
 
 if __name__ == '__main__':
-    setup = [
-        inquirer.List(
-            name='engine',
-            carousel= True,
-            message="What database engine you want to use?",
-            choices=['SQLite', 'MS-SQL', 'PostgreSQL']
-        ),
-        inquirer.List(
-            name='schema',
-            carousel=True,
-            message="What database schema you want to generate?",
-            choices=['Blog', 'Library', 'University']
-        ),
-        inquirer.List(
-            name='size',
-            carousel=True,
-            message="What size of database you want to generate?",
-            choices=['Small', 'Medium', 'Big']
-        )
-    ]
 
-    # get setup parameters
-    parameters = inquirer.prompt(setup)
+    #clear console
+    clear_console()
 
-    # load settings
-    settings = loader.load_settings()
+    # display welcome banner
+    welcome_banner()
+
+    # provide settings
+    settings = provide_settings()
+
+    print(colored('\u2713', 'green'), colored('Settings provided successful!', 'white'))

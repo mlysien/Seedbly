@@ -1,6 +1,6 @@
 import inquirer
 from engine import DatabaseEngine
-from engine.core.main import DatabaseSchemas
+from engine.core.main import DatabaseSchemas, DatabaseSchemaSizes
 
 def provide_settings():
     """
@@ -23,7 +23,7 @@ def provide_settings():
             name='size',
             carousel=True,
             message="What size of database you want to generate?",
-            choices=['Small', 'Medium', 'Big']
+            choices=[e.value for e in DatabaseSchemaSizes]
         )
     ]
 

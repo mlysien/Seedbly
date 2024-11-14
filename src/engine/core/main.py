@@ -2,7 +2,7 @@
 
 class DatabaseSchemas(Enum):
     """
-    Represents database schemas.
+    Represents database scripts.
     """
     BLOG = 'Blog'
     LIBRARY = 'Library'

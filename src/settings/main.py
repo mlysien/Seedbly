@@ -2,8 +2,10 @@ import inquirer
 from engine import DatabaseEngine
 from engine.core.main import DatabaseSchemas
 
-
 def provide_settings():
+    """
+    Displays interactive menu for provide required settings.
+    """
     setup = [
         inquirer.List(
             name='engine',

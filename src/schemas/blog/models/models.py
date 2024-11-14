@@ -1,5 +1,5 @@
 ﻿"""
-Contains all entities of blog stencil.
+Contains all entities of blog scripts.
 """
 
 from datetime import datetime

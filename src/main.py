@@ -6,7 +6,7 @@ def welcome_banner():
     """
     Displays welcome banner.
     """
-    print(colored('Welcome in Seedbly - a tool for create database schemas\n', 'light_cyan'))
+    print(colored('Welcome in Seedbly - a tool for create database scripts\n', 'light_cyan'))
 
 def clear_console():
     """

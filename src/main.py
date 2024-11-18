@@ -1,6 +1,9 @@
 ﻿import os
 from termcolor import colored
-from settings import provide_settings
+
+from engine import setup_engine
+from settings import provide_settings, provide_connection_params
+
 
 def welcome_banner():
     """
@@ -24,5 +27,10 @@ if __name__ == '__main__':
 
     # provide settings
     settings = provide_settings()
+
+    # provide connection params
+    params = provide_connection_params(settings['engine'])
+
+    setup_engine(settings | params)
 
     print(colored('\u2713', 'green'), colored('Settings provided successful!', 'white'))

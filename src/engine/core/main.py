@@ -12,14 +12,14 @@ class DatabaseSchemas(Enum):
     """
     Represents database scripts.
     """
-    BLOG = 'Blog'
-    LIBRARY = 'Library'
-    UNIVERSITY = 'University'
+    BLOG = 'blog'
+    LIBRARY = 'library'
+    UNIVERSITY = 'university'
 
 class DatabaseEngine(Enum):
     """
     Represents database engines.
     """
-    SQLITE = 'SQLite'
-    MSSQL = 'MS-SQL'
-    POSTGRESQL = 'PostgreSQL'
+    SQLITE = 'sqlite'
+    MSSQL = 'mssql'
+    POSTGRESQL = 'postgresql'

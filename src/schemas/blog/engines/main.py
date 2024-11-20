@@ -2,9 +2,9 @@
 import sqlite3
 import time
 import uuid
-
 from faker import Faker
-from engine import DatabaseSchemaSizes
+
+from engine.core import DatabaseSchemaSizes
 
 
 def generate_sqlite_blog_database(database, script, size):
@@ -155,8 +155,8 @@ def __generate_posts(connection, num_posts):
     for _ in range(num_posts):
         author_id = random.choice(user_ids)
         category_id = random.choice(category_ids) if category_ids else None
-        cursor.execute("INSERT INTO Post (author_id, title, content, category_id, created_at, updated_at, likes) "
-                       "VALUES (?, ?, ?, ?, ?, ?, ?)",
+        cursor.execute("INSERT INTO Post (author_id, title, content, category_id, "
+                       "created_at, updated_at, likes) VALUES (?, ?, ?, ?, ?, ?, ?)",
             (author_id, faker.sentence(), faker.text(), category_id, faker.date_time_this_decade(),
              faker.date_time_this_decade(), random.randint(0, 100)))
 
@@ -180,7 +180,8 @@ def __generate_comments(connection, num_comments):
     for _ in range(num_comments):
         author_id = random.choice(user_ids)
         post_id = random.choice(post_ids)
-        cursor.execute("INSERT INTO Comment (author_id, post_id, content, created_at) VALUES (?, ?, ?, ?)",
+        cursor.execute("INSERT INTO Comment (author_id, post_id, content, created_at) "
+                       "VALUES (?, ?, ?, ?)",
                        (author_id, post_id, faker.text(), faker.date_time_this_decade()))
 
     connection.commit()

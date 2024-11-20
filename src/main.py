@@ -1,7 +1,7 @@
 ﻿import os
 from termcolor import colored
 
-from engine import setup_engine
+from engine.main import setup_engine
 from settings import provide_settings, provide_connection_params
 
 

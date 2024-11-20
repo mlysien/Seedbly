@@ -1,6 +1,6 @@
 import inquirer
-from engine import DatabaseEngine, DatabaseSchemaSizes
-from engine.core import DatabaseSchemas
+
+from engine.core import DatabaseEngine, DatabaseSchemas, DatabaseSchemaSizes
 
 
 def provide_settings():
@@ -42,18 +42,6 @@ def provide_connection_params(engine):
         ]
 
         # return connection parameters for sqlite
-        return inquirer.prompt(setup)
-
-    if engine == DatabaseEngine.MSSQL.value:
-        setup = [
-            inquirer.Text("server", message="Server", default="localhost"),
-            inquirer.Text("port", message="Port", default="1443"),
-            inquirer.Text("database", message="Database", default="main"),
-            inquirer.Text("username", message="Username", default="sa"),
-            inquirer.Text("password", message="Password"),
-        ]
-
-        # return connection parameters for mssql
         return inquirer.prompt(setup)
 
     return -1

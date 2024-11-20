@@ -1,6 +1,6 @@
 ﻿from termcolor import colored
 from engine.core import DatabaseEngine
-from schemas import generate_sqlite_blog_database
+from schemas.blog.engines.main import generate_sqlite_blog_database
 
 
 def __load_schema_script(engine, schema):

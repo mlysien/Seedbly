@@ -1,6 +1,9 @@
 ﻿import os
 from termcolor import colored
-from settings import provide_settings
+
+from engine.main import setup_engine
+from settings import provide_settings, provide_connection_params
+
 
 def welcome_banner():
     """
@@ -25,4 +28,10 @@ if __name__ == '__main__':
     # provide settings
     settings = provide_settings()
 
-    print(colored('\u2713', 'green'), colored('Settings provided successful!', 'white'))
+    # provide connection params
+    params = provide_connection_params(settings['engine'])
+
+    # merge two dictionaries and setup Seedbly engine
+    setup_engine(settings | params)
+
+    print(colored('\u2713', 'green'), colored('All tasks were executed successful!', 'white'))

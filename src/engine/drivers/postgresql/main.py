@@ -15,7 +15,7 @@ def create_postgresql_schema(connection_parameters: dict[str, str], schema_query
 
         # Define the schema creation SQL command
         create_schema_query = sql.SQL(schema_query).format(
-            schema_name=sql.Identifier(connection_parameters['dbname'])
+            schema_name=sql.Identifier(connection_parameters['database'])
         )
 
         # Execute the SQL command

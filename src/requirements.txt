@@ -1,4 +1,5 @@
-﻿termcolor==2.5.0
+﻿pylint==3.3.1
+termcolor==2.5.0
 psycopg2==2.9.10
 pyodbc==5.2.0
 inquirer==3.4.0

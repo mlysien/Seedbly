@@ -1,8 +1,7 @@
 ﻿from termcolor import colored
 from engine.core import DatabaseEngine
-from engine.drivers.postgresql import create_postgresql_schema
-from engine.drivers.sqlite import create_sqlite_schema
-from engine.drivers.mssql import create_mssql_schema
+from schemas import generate_sqlite_blog_database
+
 
 def __load_schema_script(engine, schema):
     """
@@ -24,12 +23,7 @@ def setup_engine(engine_params: dict[str, str]):
     script = __load_schema_script(engine_params['engine'], engine_params['schema'])
 
     if engine_params['engine'] == DatabaseEngine.SQLITE.value:
-        create_sqlite_schema(engine_params['database'], script)
+        generate_sqlite_blog_database(engine_params['database'], script, engine_params['size'])
 
-    if engine_params['engine'] == DatabaseEngine.MSSQL.value:
-        create_mssql_schema(engine_params, script)
-
-    if engine_params['engine'] == DatabaseEngine.POSTGRESQL.value:
-        create_postgresql_schema(engine_params, script)
 
     print(colored('\u2713', 'green'), colored('Engine setup successful!', 'white'))

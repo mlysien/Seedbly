@@ -31,6 +31,7 @@ if __name__ == '__main__':
     # provide connection params
     params = provide_connection_params(settings['engine'])
 
+    # merge two dictionaries and setup Seedbly engine
     setup_engine(settings | params)
 
-    print(colored('\u2713', 'green'), colored('Settings provided successful!', 'white'))
+    print(colored('\u2713', 'green'), colored('All tasks were executed successful!', 'white'))

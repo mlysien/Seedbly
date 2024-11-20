@@ -55,9 +55,9 @@ def __get_data_size_params(size):
     if size == DatabaseSchemaSizes.BIG.value:
         return {
             'num_users': 1000000,
-            'num_categories': 2000,
+            'num_categories': 10000,
             'num_posts': 1000000,
-            'num_comments': 1000000,
+            'num_comments': 1100000,
             'num_tags': 5000,
             'num_likes': 1000000
         }
@@ -105,7 +105,7 @@ def __generate_users(connection, num_users):
     print(f'💣 Generating {num_users} rows for "User" table...')
 
     emails = [
-        f'{faker.user_name()}{uuid.uuid4().hex[:8].upper()}'
+        f'{faker.user_name()}{uuid.uuid4().hex[:6].upper()}@{faker.domain_name()}'
         for _ in range(num_users)
     ]
 
